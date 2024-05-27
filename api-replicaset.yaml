@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: myapi:latest
+        image: your-image-name:your-tag
         ports:
         - containerPort: 80
         env:
