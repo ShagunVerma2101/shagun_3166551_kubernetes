@@ -16,7 +16,7 @@ spec:
       - name: api
         image: vermashagun2101/your-image-name:your-tag3
         ports:
-        - containerPort: 80
+        - containerPort: 3000
         env:
         - name: DB_HOST
           valueFrom:
