@@ -42,7 +42,7 @@ spec:
               key: password
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql/data
+          mountPath: ./mysql_data:/var/lib/mysql/data
   volumeClaimTemplates:
   - metadata:
       name: mysql-persistent-storage
