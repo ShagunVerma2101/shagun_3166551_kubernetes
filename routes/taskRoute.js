@@ -14,7 +14,6 @@ const {
 const tasksController = require('../controllers/tasksController');
 
 router.get('/tasks', tasksController.getAll);
-router.get('/tasks/:id', tasksController.getOne);
 router.post(
 	'/tasks',
 	[validationCreate, isTaskExistsCreate],
@@ -26,7 +25,5 @@ router.put(
 	tasksController.update
 );
 router.delete('/tasks', [validationDelete], tasksController.delete);
-router.post('/tasks/update_picture', tasksController.updatePicture);
-router.post('/tasks/send_email', tasksController.sendEmail);
 
 module.exports = router;

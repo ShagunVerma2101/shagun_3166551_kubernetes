@@ -1,13 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const morgan = require('morgan');
-const helmet = require('helmet');
 
 const app = express();
 
-app.use(helmet());
-app.use(morgan('tiny'));
 app.use(
 	cors({
 		//origin: process.env.CLIENT_URL
@@ -35,8 +31,7 @@ app.get('/', (req, res, next) => {
 });
 
 const taskRoute = require('./routes/taskRoute');
-const userRoute = require('./routes/userRoute');
-app.use([taskRoute, userRoute]); // you can add more routes in this array
+app.use([taskRoute]); // you can add more routes in this array
 
 //404 error
 app.get('*', function (req, res) {
