@@ -19,7 +19,7 @@ spec:
         - containerPort: 3000
         env:
         - name: DATABASE_URI
-          value: 'mysql+pymysql://root:root@mysql-normal.default.svc.cluster.local:3306/todo'
+          value: 'mysql://root:root@mysql-normal.default.svc.cluster.local:3306/todo'
         env:
         - name: DB_HOST
           valueFrom:
