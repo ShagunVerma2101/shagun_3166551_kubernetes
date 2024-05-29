@@ -43,11 +43,11 @@ spec:
         volumeMounts:
         - name: mysql-persistent-storage
           mountPath: ./mysql_data:/var/lib/mysql/data
-  volumeClaimTemplates:
-  - metadata:
-      name: mysql-persistent-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 64Mi
+  # volumeClaimTemplates:
+  # - metadata:
+  #     name: mysql-persistent-storage
+  #   spec:
+  #     accessModes: [ "ReadWriteOnce" ]
+  #     resources:
+  #       requests:
+  #         storage: 64Mi
