@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: vermashagun2101/your-image-name:your-tag3
+        image: vermashagun2101/nagp-api:tag3
         ports:
         - containerPort: 3000
         env:
