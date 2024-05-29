@@ -13,6 +13,10 @@ spec:
       labels:
         app: mysql
     spec:
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
       containers:
       - name: mysql
         image: mysql:5.7
@@ -51,3 +55,4 @@ spec:
       resources:
         requests:
           storage: 64Mi
+          
