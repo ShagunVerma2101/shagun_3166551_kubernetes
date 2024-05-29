@@ -3,23 +3,22 @@ kind: StatefulSet
 metadata:
   name: mysql
 spec:
-  serviceName: mysql
-  replicas: 1
   selector:
     matchLabels:
       app: mysql
+  serviceName: "mysql"
+  replicas: 1
   template:
     metadata:
       labels:
         app: mysql
     spec:
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
       containers:
       - name: mysql
         image: mysql:5.7
+        ports:
+        - containerPort: 3306
+          name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
@@ -41,17 +40,14 @@ spec:
             secretKeyRef:
               name: db-secret
               key: password
-        ports:
-        - containerPort: 3306
         volumeMounts:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql/data
+          mountPath: ./mysql_data:/var/lib/mysql/data
   volumeClaimTemplates:
   - metadata:
       name: mysql-persistent-storage
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: gp2
       resources:
         requests:
           storage: 64Mi
