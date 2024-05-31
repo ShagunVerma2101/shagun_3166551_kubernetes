@@ -5,7 +5,7 @@ var fs = require('fs');
 
 // Get All
 module.exports.getAll = (req, res, next) => {
-	con.query('SELECT * FROM tasks', function (err, result, fields) {
+	con.query('SELECT * FROM todo', function (err, result, fields) {
 		if (err) {
 			return next(err);
 		}
@@ -19,7 +19,7 @@ module.exports.getAll = (req, res, next) => {
 // Get One
 module.exports.getOne = (req, res, next) => {
 	const id = req.params.id;
-	con.query(`SELECT * FROM tasks WHERE id=?`, [id], function (
+	con.query(`SELECT * FROM todo WHERE id=?`, [id], function (
 		err,
 		result,
 		fields
@@ -38,7 +38,7 @@ module.exports.getOne = (req, res, next) => {
 module.exports.create = (req, res, next) => {
 	const task = req.body.task;
 
-	var sql = `INSERT INTO tasks(task) VALUES(?)`;
+	var sql = `INSERT INTO todo(task) VALUES(?)`;
 
 	con.query(sql, [task], function (err, result) {
 		if (err) {
@@ -61,7 +61,7 @@ module.exports.update = (req, res, next) => {
 	const task = req.body.task;
 	const status = req.body.status;
 
-	var sql = `UPDATE tasks SET task=?, status=?, date_updated=NOW() WHERE id=?`;
+	var sql = `UPDATE todo SET title=?`;
 
 	con.query(sql, [task, status, id], function (err, result) {
 		if (err) {
@@ -79,7 +79,7 @@ module.exports.update = (req, res, next) => {
 // Delete
 module.exports.delete = (req, res, next) => {
 	const id = req.body.id;
-	var sql = `DELETE FROM tasks WHERE id=?`;
+	var sql = `DELETE FROM todo WHERE id=?`;
 
 	con.query(sql, [id], function (err, result) {
 		if (err) {
