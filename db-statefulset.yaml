@@ -81,7 +81,7 @@ spec:
             claimName: mysql-pv-claim
   volumeClaimTemplates:
     - metadata:
-        name: mysql-data
+        name: mysql-pv-claim
       spec:
         accessModes: ["ReadWriteOnce"]
         resources:
