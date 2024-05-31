@@ -7,7 +7,7 @@ provisioner: kubernetes.io/no-provisioner
 apiVersion: v1
 kind: Service
 metadata:
-  name: mysql-headless
+  name: mysql
 spec:
   clusterIP: None
   selector:
@@ -35,7 +35,7 @@ data:
     USE todo;
     CREATE TABLE todo (id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY, title VARCHAR(100), complete BOOLEAN);
     data:
-  database-host: "mysql-headless.default.svc.cluster.local"
+  database-host: "mysql.default.svc.cluster.local"
   database-name: "todo"
 ---
 apiVersion: apps/v1
@@ -44,7 +44,7 @@ metadata:
   name: mysql
 spec:
   replicas: 1
-  serviceName: mysql-headless
+  serviceName: mysql
   selector:
     matchLabels:
       app: db
