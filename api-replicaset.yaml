@@ -14,12 +14,9 @@ spec:
     spec:
       containers:
       - name: api
-        image: vermashagun2101/nagp-api:tag4
+        image: vermashagun2101/nagp-api:tag5
         ports:
         - containerPort: 3000
-        env:
-        - name: DATABASE_URI
-          value: 'mysql://root:root@mysql-normal.default.svc.cluster.local:3306/todo'
         env:
         - name: DB_HOST
           valueFrom:
