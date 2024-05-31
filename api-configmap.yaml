@@ -3,5 +3,6 @@ kind: ConfigMap
 metadata:
   name: api-config
 data:
-  database-host: "mysql"
-  database-name: "mydatabase"
+  database-host: "mysql://root:root@mysql-normal.default.svc.cluster.local:3306/todo"
+  database-name: "todo"
+  
