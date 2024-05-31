@@ -3,4 +3,5 @@ kind: ConfigMap
 metadata:
   name: db-config
 data:
+  database-host: "mysql-headless.default.svc.cluster.local"
   database-name: "todo"
