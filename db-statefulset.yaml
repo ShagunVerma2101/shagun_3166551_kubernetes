@@ -73,9 +73,9 @@ spec:
             - name: mysql-initdb
               mountPath: /docker-entrypoint-initdb.d
       volumes:
-        - name: mysql-initdb
-          configMap:
-            name: mysql-initdb-config
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
   volumeClaimTemplates:
     - metadata:
         name: mysql-data
