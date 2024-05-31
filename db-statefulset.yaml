@@ -76,3 +76,12 @@ spec:
         - name: mysql-initdb
           configMap:
             name: mysql-initdb-config
+volumeClaimTemplates:
+  - metadata:
+      name: mysql-data
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+      storageClassName: manual
