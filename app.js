@@ -47,6 +47,12 @@ app.use((err, req, res, next) => {
 	err.statusCode = err.statusCode || 500;
 	err.status = err.status || 'error';
 
+	// Check for the specific MySQL error
+	if (err.code === 'PROTOCOL_ENQUEUE_AFTER_FATAL_ERROR') {
+		console.log('Attempting to reconnect to MySQL...');
+		handleDisconnect();
+	}
+	
 	res.status(err.statusCode).json({
 		status: err.status,
 		message: err.message,
