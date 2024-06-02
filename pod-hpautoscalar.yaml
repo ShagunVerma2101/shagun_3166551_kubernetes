@@ -8,8 +8,8 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: api-deployment
-  minReplicas: 1
-  maxReplicas: 3
+  minReplicas: 3
+  maxReplicas: 5
   metrics:
   - type: Resource
     resource:
@@ -17,3 +17,15 @@ spec:
       target:
         type: Utilization
         averageUtilization: 50
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 10 #10 secs for demo purpose
+      policies:
+      - type: Percent
+        value: 50
+        periodSeconds: 10
+    scaleUp:
+      policies:
+      - type: Percent
+        value: 100
+        periodSeconds: 10

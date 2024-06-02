@@ -21,9 +21,9 @@ spec:
         - containerPort: 3000
         resources:
           requests:
-            cpu: 1m     
+            cpu: 100m     
           limits:
-            cpu: 2m 
+            cpu: 100m 
         env:
         - name: DB_HOST
           valueFrom:
