@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: api-deployment
-   strategy:
+  strategy:
     type: RollingUpdate
   template:
     metadata:
